@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp">
+
+<RelativeLayout
+    android:id="@+id/editLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/newTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/stitle"
+        android:layout_margin="2dp"/>
+
+    <EditText
+        android:id="@+id/newDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/sdescription"
+        android:inputType="textCapSentences|textMultiLine"
+        android:layout_margin="2dp"
+        android:scrollbars="vertical"
+        android:lines="5"
+        android:maxLines="10"
+        android:gravity="top|start"
+        android:layout_below="@+id/newTitle"/>
+
+</RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editLayout"
+        android:gravity="end">
+
+        <Button
+            android:id="@+id/nCancel"
+            android:layout_gravity="end"
+            android:text="@string/sCancel"
+            android:layout_width="wrap_content"
+            android:textColor="@color/colorGrey"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            style="?android:attr/buttonBarButtonStyle"/>
+
+        <Button
+            android:id="@+id/nAdd"
+            android:textStyle="bold"
+            android:text="@string/sAdd"
+            android:textColor="@color/colorAccent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/buttonBarButtonStyle"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

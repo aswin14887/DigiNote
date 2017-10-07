@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/delete"
+        app:showAsAction="never"
+        android:title="@string/mDelete"/>
+
+    <item
+        android:id="@+id/deleteAll"
+        app:showAsAction="never"
+        android:title="@string/mDelete_all"/>
+
+    <item
+        android:visible="false"
+        android:id="@+id/deleteDone"
+        app:showAsAction="ifRoom"
+        android:title="@string/mDoneDelete"/>
+</menu>

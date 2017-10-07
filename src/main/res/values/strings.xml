@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">DigiNote</string>
+    <string name="emptyListText">You have no note</string>
+    <string name="stitle">Title</string>
+    <string name="sdescription">Description</string>
+    <string name="sCancel">Cancel</string>
+    <string name="sAdd">Add</string>
+    <string name="mDelete">Delete</string>
+    <string name="mDelete_all">Delete all</string>
+    <string name="mDoneDelete">Done</string>
+</resources>
