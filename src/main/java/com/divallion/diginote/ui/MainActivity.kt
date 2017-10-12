@@ -111,7 +111,7 @@ class MainActivity : AppCompatActivity(), ViewHelper {
         dialog.findViewById<Button>(R.id.nAdd).setOnClickListener {
             if (validateInput(nTitle, nDesc)) {
                 notePresenter.addNote(nTitle.text.toString(), nDesc.text.toString())
-                notifyUpdate()
+                showNotes()
                 Toast.makeText(this@MainActivity, getString(R.string.confirm_new_note), Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
             }
@@ -148,7 +148,7 @@ class MainActivity : AppCompatActivity(), ViewHelper {
                 noteList.adapter = RViewDeleteAdapter()
                 updateMenuForDelete()
             }
-            item?.itemId == R.id.deleteAll -> deleteAllConfirm()
+            item?.itemId == R.id.deleteAll -> { deleteAllConfirm(); showNotes()}
             item?.itemId == R.id.deleteDone -> {
                 deleteSelectedItem()
                 updateMenuNormal()
@@ -163,7 +163,7 @@ class MainActivity : AppCompatActivity(), ViewHelper {
         val aDialog = AlertDialog.Builder (this)
         aDialog.setTitle(getString(R.string.deleteAll_title))
         aDialog.setMessage(getString(R.string.deleteAll_msg))
-        aDialog.setPositiveButton(getString(R.string.yes)) { _, _ -> notePresenter.deleteAll() }
+        aDialog.setPositiveButton(getString(R.string.yes)) { _, _ -> run { notePresenter.deleteAll(); showNotes()} }
         aDialog.setNegativeButton(getString(R.string.cancel)) { dialog, _ -> dialog?.cancel() }
         aDialog.create().show()
     }
@@ -174,8 +174,10 @@ class MainActivity : AppCompatActivity(), ViewHelper {
                 notePresenter.deleteNote(it.id)
             }
         }
-        if (!fabCreateNote.isShown)
+        if (!fabCreateNote.isShown) {
+            showNotes()
             fabCreateNote.show()
+        }
     }
 
     private fun updateMenuForDelete() {
@@ -188,12 +190,12 @@ class MainActivity : AppCompatActivity(), ViewHelper {
         mMenu?.findItem(R.id.delete)?.isVisible = true
         mMenu?.findItem(R.id.deleteAll)?.isVisible = true
         mMenu?.findItem(R.id.deleteDone)?.isVisible = false
-        notifyUpdate()
+        showNotes()
     }
 
     override fun onBackPressed() {
         if (noteList.adapter is RViewDeleteAdapter) {
-            notifyUpdate()
+            showNotes()
             updateMenuNormal()
         }
         else
