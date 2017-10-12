@@ -7,5 +7,15 @@
     <string name="sAdd">Add</string>
     <string name="mDelete">Delete</string>
     <string name="mDelete_all">Delete all</string>
-    <string name="mDoneDelete">Done</string>
+    <string name="done">Done</string>
+    <string name="edit_note_description">Edit this Note</string>
+    <string name="newNote_title">Add note</string>
+    <string name="confirm_new_note">New note added</string>
+    <string name="empty_error_msg">Cannot be empty</string>
+    <string name="deleteAll_title">Confirm?</string>
+    <string name="deleteAll_msg">Are you sure to delete all notes?</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
+    <string name="edit_confirm">Edit saved</string>
+    <string name="editNote_title">Edit note</string>
 </resources>

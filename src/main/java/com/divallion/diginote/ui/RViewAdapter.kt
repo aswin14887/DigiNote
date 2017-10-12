@@ -9,7 +9,7 @@ import com.divallion.diginote.model.Notes
 import com.divallion.diginote.model.NotesList
 import kotlinx.android.synthetic.main.list_item.view.*
 
-class RViewAdapter : RecyclerView.Adapter<RViewAdapter.VHolder>() {
+class RViewAdapter(private val listener: (Notes) -> Unit) : RecyclerView.Adapter<RViewAdapter.VHolder>() {
 
     var mList: List<Notes> = NotesList.list
 
@@ -17,17 +17,20 @@ class RViewAdapter : RecyclerView.Adapter<RViewAdapter.VHolder>() {
             VHolder(LayoutInflater.from(parent?.context).inflate(R.layout.card_view, parent, false))
 
     override fun onBindViewHolder(holder: VHolder?, position: Int) {
-        holder?.bindViews(mList[position])
+        holder?.bindViews(mList[position], listener)
     }
 
     override fun getItemCount(): Int = mList.size
 
     class VHolder( view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bindViews(notes: Notes){
+        fun bindViews(notes: Notes, listener: (Notes) -> Unit){
             with(notes){
                 itemView.noteTitle.text = notes.title
                 itemView.noteDescription.text = notes.desc
+                itemView.editButton.setOnClickListener {
+                    listener(notes)
+                }
             }
         }
 
